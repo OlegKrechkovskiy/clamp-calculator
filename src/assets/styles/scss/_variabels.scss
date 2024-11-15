@@ -1,0 +1,16 @@
+/* COLORS */
+$primary_dark: rgba(33, 33, 33, 1);
+$primary_blue: rgba(113, 136, 212, 1);
+
+$dark: $primary_dark;
+$text: lighten($primary_dark, 4.7%);
+$grey: lighten($primary_dark, 46%);
+$light: lighten($primary_dark, 100%);
+$lite_blue: rgba(225, 232, 255, 1);
+$blue: $primary_blue;
+
+/* transition */
+$transition: 0.3s ease;
+
+/* SIZES */
+$max_width: 1000px;

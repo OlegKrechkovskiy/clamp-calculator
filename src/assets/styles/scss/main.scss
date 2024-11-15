@@ -1,0 +1,37 @@
+@import './variabels';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scrollbar-gutter: stable;
+}
+
+.container {
+  max-width: $max_width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(5px, calc(0.2941px + 1.4706vw), 15px);
+}
+
+.page-title {
+  padding: 1rem 0;
+}
+
+button {
+  cursor: pointer;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.scroll-lock {
+  overflow: hidden;
+}
