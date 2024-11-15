@@ -5,8 +5,8 @@ import styles from './ClampFunction.module.scss';
 const ClampFunction = () => {
   const [minWidthPX, setMinWidthPX] = useState(320);
   const [maxWidthPX, setMaxWidthPX] = useState(1920);
-  const [minFontSizePX, setMinFontSizePX] = useState(1);
-  const [maxFontSizePX, setMaxFontSizePX] = useState(3);
+  const [minValueSizePX, setMinFontSizePX] = useState(1);
+  const [maxValueSizePX, setMaxFontSizePX] = useState(3);
   const [pixelsPerRem, setPixelsPerRem] = useState(16);
   const [unitOfMeasurement, setUnitOfMeasurement] = useState('rem');
 
@@ -22,13 +22,13 @@ const ClampFunction = () => {
       setFunc: setMaxWidthPX
     },
     {
-      title: 'Minimum font size = ',
-      func: minFontSizePX,
+      title: 'Minimum value size = ',
+      func: minValueSizePX,
       setFunc: setMinFontSizePX
     },
     {
-      title: 'Maximum font size = ',
-      func: maxFontSizePX,
+      title: 'Maximum value size = ',
+      func: maxValueSizePX,
       setFunc: setMaxFontSizePX
     },
     {
@@ -88,10 +88,10 @@ const ClampFunction = () => {
   // console.log('pixelsPerRem: ', pixelsPerRem, unitOfMeasurement);
   const maxWidth = maxWidthPX / pixelsPerRem;
 
-  const slope = (maxFontSizePX - minFontSizePX) / (maxWidth - minWidth);
-  const yAxisIntersection = -minWidth * slope + minFontSizePX;
+  const slope = (maxValueSizePX - minValueSizePX) / (maxWidth - minWidth);
+  const yAxisIntersection = -minWidth * slope + minValueSizePX;
 
-  const clampFunc = `clamp(${minFontSizePX}${unitOfMeasurement}, calc(${yAxisIntersection.toFixed(4)}${unitOfMeasurement} + ${(slope * 100).toFixed(4)}vw), ${maxFontSizePX}${unitOfMeasurement})`;
+  const clampFunc = `clamp(${minValueSizePX}${unitOfMeasurement}, calc(${yAxisIntersection.toFixed(4)}${unitOfMeasurement} + ${(slope * 100).toFixed(4)}vw), ${maxValueSizePX}${unitOfMeasurement})`;
 
   return (
     <div className='container'>
