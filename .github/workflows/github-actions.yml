@@ -27,7 +27,7 @@ jobs:
       - name: 🧐 lint Project
         uses: borales/actions-yarn@v4
         with:
-          cmd: build
+          cmd: lint
 
       - name: 🔨 Build Project
         uses: borales/actions-yarn@v4
