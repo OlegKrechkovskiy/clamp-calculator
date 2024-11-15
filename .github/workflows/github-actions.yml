@@ -4,11 +4,12 @@ run-name: ${{ github.actor }} starting this workflow 🚀
 on:
   pull_request:
     types:
-      - closed
+      - opened
+      # - closed
 
 jobs:
   Deploy:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
