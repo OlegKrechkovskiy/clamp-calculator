@@ -4,8 +4,8 @@ run-name: ${{ github.actor }} starting this workflow 🚀
 on:
   pull_request:
     types:
-      - opened
-      # - closed
+      # - opened
+      - closed
 
 jobs:
   Deploy:
@@ -34,3 +34,13 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          protocol: ftp
+          password: ${{ secrets.FTP_PASSWORD }}
+          username: ${{ secrets.FTP_USERNAME }}
+          local-dir: dist/
+          server-dir: /www/myxlxal.ru/
