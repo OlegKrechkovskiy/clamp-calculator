@@ -3,13 +3,60 @@ run-name: ${{ github.actor }} starting this workflow 🚀
 
 on:
   pull_request:
+    branches: [ main ]
+    types:
+      - opened
+      # - closed
+
+jobs:
+  Deploy:
+    # if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: ⤵️ Use Node.js latest
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: 🔧 install Project
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+
+      - name: 🧐 lint Project
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: lint
+
+      - name: 🔨 Build Project
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          protocol: ftp
+          password: ${{ secrets.FTP_PASSWORD }}
+          username: ${{ secrets.FTP_USERNAME }}
+          local-dir: dist/
+          server-dir: /www/myxlxal.ru/
+
+on:
+  pull_request:
+    branches: [ main ]
     types:
       # - opened
       - closed
 
 jobs:
   Deploy:
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
+    run: echo "⏳ preparing for deployment"
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
