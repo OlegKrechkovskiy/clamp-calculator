@@ -39,13 +39,15 @@ const ClampFunction = () => {
   ];
 
   const copyShow = useRef();
+  const result = useRef();
 
-  const copyToClipboard = (showMEss, text) => {
+  const copyToClipboard = (showMEss, text, toggleResult) => {
     //xxx Если браузер поддерживает Clipboard API, то копируем в буфер обмена
     if (window.isSecureContext && navigator.clipboard) {
       navigator.clipboard.writeText(text);
       showMEss.current.style.opacity = '1';
-      setTimeout(() => (showMEss.current.style.opacity = '0'), 5000);
+      toggleResult.current.classList.add('jelloHorizontal');
+      setTimeout(() => (showMEss.current.style.opacity = '0',toggleResult.current.classList.remove('jelloHorizontal')), 5000);
     } else {
       window.popup.showModal();
       document.body.classList.add('scroll-lock');
@@ -69,9 +71,11 @@ const ClampFunction = () => {
     }
   };
 
-  const changeUnion = union => {
+  const changeUnion = (union, toggleResult) => {
     // console.log('union: ', union);
     union === 'rem' ? setPixelsPerRem(16) : setPixelsPerRem(1);
+    toggleResult.current.classList.add('jelloHorizontal');
+    setTimeout(() => (toggleResult.current.classList.remove('jelloHorizontal')), 2000);
   };
 
   // const unsecuredCopyToClipboard = text => {
@@ -105,7 +109,7 @@ const ClampFunction = () => {
       </p>
       <p className={styles['page-description']}>
         Для рассчета НЕ В rem - просто выставляем в поле{' '}
-        <b>&quot;Pixels per rem = &quot; 1</b>
+        <b>&quot;Pixels&nbsp;per&nbsp;rem&nbsp;=&nbsp;&quot;&nbsp;1</b>
       </p>
 
       <div className={styles['block']}>
@@ -147,7 +151,7 @@ const ClampFunction = () => {
             className={styles['block__select']}
             onChange={event => {
               setUnitOfMeasurement(event.target.value);
-              changeUnion(event.target.value);
+              changeUnion(event.target.value, result);
             }}
             defaultValue='rem'
           >
@@ -163,10 +167,10 @@ const ClampFunction = () => {
           <span className={styles['result__item-title']}>
             result width calc() ={' '}
           </span>
-          <div className={styles['result__value']}>{clampFunc}</div>
+          <div ref={result} className={styles['result__value']}>{clampFunc}</div>
           <div
             className={styles['result__copy']}
-            onClick={() => copyToClipboard(copyShow, clampFunc)}
+            onClick={() => copyToClipboard(copyShow, clampFunc, result)}
           >
             <img src={Copy} alt='Copy' title='Copy' />
           </div>

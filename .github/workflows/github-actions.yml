@@ -3,9 +3,9 @@ run-name: ${{ github.actor }} starting this workflow 🚀
 
 on:
   pull_request:
+    branches: [ main ]
     types:
-      # - opened
-      - closed
+      - opened
 
 jobs:
   Deploy:
@@ -35,12 +35,3 @@ jobs:
         with:
           cmd: build
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          protocol: ftp
-          password: ${{ secrets.FTP_PASSWORD }}
-          username: ${{ secrets.FTP_USERNAME }}
-          local-dir: dist/
-          server-dir: /www/myxlxal.ru/
