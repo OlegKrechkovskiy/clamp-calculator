@@ -6,4 +6,4 @@ This service helps you quickly and easily calculate the sizes, margins, etc. tha
 
 [![checking errors and build](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml)
 
-[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml)
+[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml)
