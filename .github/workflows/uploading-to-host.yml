@@ -1,15 +1,15 @@
-name: checking errors and build
-run-name: checking errors and build 🗿
+name: uploading on myxlxal.ru
+run-name: uploading on myxlxal.ru 🚀
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
     types:
-      - opened
+      - closed
 
 jobs:
   Deploy:
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
@@ -35,3 +35,12 @@ jobs:
         with:
           cmd: build
 
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          protocol: ftp
+          password: ${{ secrets.FTP_PASSWORD }}
+          username: ${{ secrets.FTP_USERNAME }}
+          local-dir: dist/
+          server-dir: /www/myxlxal.ru/
