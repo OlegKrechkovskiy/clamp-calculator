@@ -40,7 +40,7 @@
 }
 
 .page-description {
-  text-align: center;
+  text-align: right;
   font-size: clamp(0.75rem, calc(0.725rem + 0.125vw), 1rem);
 }
 
@@ -50,7 +50,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  margin-top: 1rem;
 }
 
 .block__item {
@@ -148,12 +147,12 @@ input::-webkit-inner-spin-button {
 }
 
 .result {
-  margin-top: 1rem;
+  margin-top: var(--margin_block);;
   margin-bottom: 60px;
 }
 
 .result__item {
-  padding: 20px 0;
+  padding: var(--margin_block) 0 20px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -190,7 +189,9 @@ input::-webkit-inner-spin-button {
     flex: 1 1 100%;
     text-align: center;
   }
+
 }
+
 
 .result__copy {
   position: relative;
