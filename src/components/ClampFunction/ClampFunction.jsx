@@ -7,8 +7,8 @@ const ClampFunction = () => {
   const [maxWidthPX, setMaxWidthPX] = useState(1920);
   const [minValueSizePX, setMinFontSizePX] = useState(1);
   const [maxValueSizePX, setMaxFontSizePX] = useState(3);
-  const [pixelsPerRem, setPixelsPerRem] = useState(16);
-  const [unitOfMeasurement, setUnitOfMeasurement] = useState('rem');
+  const [pixelsPerRem, setPixelsPerRem] = useState(1);
+  const [unitOfMeasurement, setUnitOfMeasurement] = useState('px');
 
   const fields = [
     {
@@ -108,9 +108,10 @@ const ClampFunction = () => {
         Подходит для размеров шрифтов, отступов, размеров блоков...
       </p>
       <p className={styles['page-description']}>
-        Для рассчета НЕ В rem - просто выставляем в поле{' '}
-        <b>&quot;Pixels&nbsp;per&nbsp;rem&nbsp;=&nbsp;&quot;&nbsp;1</b>
+        Для рассчета В <b>rem</b> - просто выставляем в поле{' '}
+        <b>&quot;Pixels&nbsp;per&nbsp;rem&nbsp;=&nbsp;&quot;&nbsp;значение px</b>
       </p>
+      <p className={styles['page-description']}>*Пример:&nbsp;<b>1rem&nbsp;==&nbsp;16px</b></p>
 
       <div className={styles['block']}>
         {fields.map((field, index) => (
@@ -153,7 +154,7 @@ const ClampFunction = () => {
               setUnitOfMeasurement(event.target.value);
               changeUnion(event.target.value, result);
             }}
-            defaultValue='rem'
+            defaultValue='px'
           >
             <option value='rem'>rem</option>
             <option value='px'>px</option>
