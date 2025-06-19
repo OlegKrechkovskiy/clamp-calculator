@@ -52,10 +52,11 @@ const Example = () => {
   return (
     <div className={styles.wrapper}>
       <div className='container'>
-        <h2 className={styles['block-title']}>
-          Пример блока с адаптивными размерами
+        <h2 className={`not_allocated ${styles['block-title']}`}>
+          Пример блока с&nbsp;адаптивными размерами<br />
+          <small>При ресайзе окна браузера размеры блока, отступы, шрифт, радиусы углов будут изменяться</small>
         </h2>
-        <div className={styles['block']} data-block>
+        <div className={`not_allocated ${styles['block']}`} data-block>
           <div className={styles['block-info']}>
             <p className={styles['block-width']}>
               Block width:{' '}
