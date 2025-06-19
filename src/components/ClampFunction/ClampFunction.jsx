@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import Copy from './copy.svg';
 import styles from './ClampFunction.module.scss';
+import Copy from './copy.svg';
 
 const ClampFunction = () => {
   const [minWidthPX, setMinWidthPX] = useState(320);
@@ -12,26 +12,31 @@ const ClampFunction = () => {
 
   const fields = [
     {
+      id: 'minWidthPX',
       title: 'Minimum viewport width = ',
       func: minWidthPX,
       setFunc: setMinWidthPX
     },
     {
+      id: 'maxWidthPX',
       title: 'Maximum viewport width = ',
       func: maxWidthPX,
       setFunc: setMaxWidthPX
     },
     {
+      id: 'minValueSizePX',
       title: 'Minimum value size = ',
       func: minValueSizePX,
       setFunc: setMinFontSizePX
     },
     {
+      id: 'maxValueSizePX',
       title: 'Maximum value size = ',
       func: maxValueSizePX,
       setFunc: setMaxFontSizePX
     },
     {
+      id: 'pxRem',
       title: 'Pixels per rem = ',
       func: pixelsPerRem,
       setFunc: setPixelsPerRem
@@ -40,6 +45,7 @@ const ClampFunction = () => {
 
   const copyShow = useRef();
   const result = useRef();
+  const pxRem = useRef(null);
 
   const copyToClipboard = (showMEss, text, toggleResult) => {
     //xxx Если браузер поддерживает Clipboard API, то копируем в буфер обмена
@@ -47,7 +53,7 @@ const ClampFunction = () => {
       navigator.clipboard.writeText(text);
       showMEss.current.style.opacity = '1';
       toggleResult.current.classList.add('jelloHorizontal');
-      setTimeout(() => (showMEss.current.style.opacity = '0',toggleResult.current.classList.remove('jelloHorizontal')), 5000);
+      setTimeout(() => (showMEss.current.style.opacity = '0', toggleResult.current.classList.remove('jelloHorizontal')), 5000);
     } else {
       window.popup.showModal();
       document.body.classList.add('scroll-lock');
@@ -72,8 +78,7 @@ const ClampFunction = () => {
   };
 
   const changeUnion = (union, toggleResult) => {
-    // console.log('union: ', union);
-    union === 'rem' ? setPixelsPerRem(16) : setPixelsPerRem(1);
+    union === 'rem' ? (setPixelsPerRem(16), pxRem.current.removeAttribute('disabled')) : (setPixelsPerRem(1), pxRem.current.setAttribute('disabled', ''));
     toggleResult.current.classList.add('jelloHorizontal');
     setTimeout(() => (toggleResult.current.classList.remove('jelloHorizontal')), 2000);
   };
@@ -97,27 +102,38 @@ const ClampFunction = () => {
 
   const clampFunc = `clamp(${minValueSizePX}${unitOfMeasurement}, calc(${yAxisIntersection.toFixed(4)}${unitOfMeasurement} + ${(slope * 100).toFixed(4)}vw), ${maxValueSizePX}${unitOfMeasurement})`;
 
+  const scheckinput = (event) => {
+    const value = event.target.value;
+
+    if (value.startsWith('0')) {
+      event.target.value = value.slice(1);
+    } else {
+      event.target.value = value;
+    }
+  }
+
   return (
     <div className='container'>
-      <h1 className={styles['page-title']}>Clamp function</h1>
-      <p className={styles['page-description']}>
+      <h1 className={`not_allocated ${styles['page-title']}`}>Clamp function</h1>
+      <p className={`not_allocated ${styles['page-description']}`}>
         Данная функция рассчитывает наиблее приемлемые значения для адаптивного
         уменьшения/увеличения размеров.
       </p>
-      <p className={styles['page-description']}>
+      <p className={`not_allocated ${styles['page-description']}`}>
         Подходит для размеров шрифтов, отступов, размеров блоков...
       </p>
-      <p className={styles['page-description']}>
+      <p className={`not_allocated ${styles['page-description']}`}>
         Для рассчета В <b>rem</b> - просто выставляем в поле{' '}
         <b>&quot;Pixels&nbsp;per&nbsp;rem&nbsp;=&nbsp;&quot;&nbsp;значение px</b>
       </p>
-      <p className={styles['page-description']}>*Пример:&nbsp;<b>1rem&nbsp;==&nbsp;16px</b></p>
+      <p className={`not_allocated ${styles['page-description']}`}>*Пример:&nbsp;<b>1rem&nbsp;==&nbsp;16px</b></p>
 
       <div className={styles['block']}>
         {fields.map((field, index) => (
+          // <div className={styles['block__item']} key={index}  {...field.id && field.id == 'unitOfMeasurement' ? { ref: pxRem } : ''}>
           <div className={styles['block__item']} key={index}>
             <div className={styles['block__title']}>{field.title}</div>
-            <div className={styles['block__quantity']}>
+            <div className={styles['block__quantity']} ref={field.id === 'pxRem' ? pxRem : null} {...field.id === 'pxRem' && { disabled: true }}>
               <span
                 className={styles['block__quantity-button']}
                 onClick={() => field.setFunc(+field.func - 1)}
@@ -125,10 +141,12 @@ const ClampFunction = () => {
                 -
               </span>
               <input
+                ref={fields.id}
                 value={field.func}
                 className={styles['block__input']}
+                name={field.id}
                 type='number'
-                onChange={e => field.setFunc(Number(e.target.value))}
+                onChange={e => (scheckinput(e), field.setFunc(Number(e.target.value)))}
               />
               <span
                 className={styles['block__quantity-button']}
@@ -145,7 +163,7 @@ const ClampFunction = () => {
             [styles['block__item'], styles['block__item-last']].join(' ')
           ]}
         >
-        <div className={styles['block__title']}>Показывать результат в </div>
+          <div className={styles['block__title']}>Показывать результат в </div>
           <select
             name=''
             id=''

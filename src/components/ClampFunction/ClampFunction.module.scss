@@ -132,6 +132,11 @@
       background-color: var(--lite_blue);
     }
   }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }
 
 .block__input {
@@ -245,7 +250,7 @@ input::-webkit-inner-spin-button {
   width: 100%;
   border-radius: clamp(6px, calc(2.5714px + 0.8571vw), 12px);
   transform: translate(-50%, -50%);
-  z-index: 10;
+  z-index: 20;
 
   &-wrapper {
     padding: 50px 1.2em 1.7em;
