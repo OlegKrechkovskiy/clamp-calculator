@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Example.module.scss';
+import video from './clamp.gif';
 
 const Example = () => {
   const [fontSize, setFontSize] = useState(0);
@@ -87,6 +88,11 @@ const Example = () => {
           <div className={styles['line-block-height']}></div>
           <div className={styles['line-bor-radius']}></div>
         </div>
+
+        <div className={styles['example']}>
+          <img src={video} alt="" />
+        </div>
+
       </div>
     </div>
   );
