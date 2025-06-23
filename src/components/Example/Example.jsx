@@ -90,7 +90,7 @@ const Example = () => {
         </div>
 
         <div className={styles['example']}>
-          <img src={video} alt="" />
+          <img className={styles['example-img']} src={video} alt="" />
         </div>
 
       </div>

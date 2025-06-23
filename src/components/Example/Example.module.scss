@@ -102,6 +102,11 @@
 .example {
   margin-top: 100px;
   border-radius: 6px;
-  box-shadow: 0 0 20px 1px rgb(50, 96, 204);
+  // box-shadow: 0 0 20px 1px rgb(50, 96, 204);
   overflow: hidden;
+
+  &-img {
+    width: 100%;
+    border-radius: 6px;
+  }
 }
