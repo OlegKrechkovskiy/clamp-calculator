@@ -5,6 +5,7 @@
   /* COLORS */
   --primary_dark: rgba(33, 33, 33, 1);
   --primary_blue: rgba(113, 136, 212, 1);
+  --warn: rgba(255, 0, 0, 1);
 
   --dark: var(--primary_dark);
   --text: color-mix(in srgb, var(--primary_dark) 4.7%, #ffffff);
@@ -182,6 +183,9 @@ input::-webkit-inner-spin-button {
 .result__item-title {
   min-width: 144px;
 }
+.result__warning {
+  color: var(--warn);
+}
 
 .result__value {
   padding: 5px 10px;
@@ -203,6 +207,9 @@ input::-webkit-inner-spin-button {
 
 }
 
+.result__description {
+  color: var(--warn);
+}
 
 .result__copy {
   position: relative;
@@ -281,5 +288,15 @@ input::-webkit-inner-spin-button {
     background-color: rgb(0 0 0 / 0.6);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+  }
+}
+
+.swap {
+  &__label {
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    margin-right: 10px;
   }
 }
