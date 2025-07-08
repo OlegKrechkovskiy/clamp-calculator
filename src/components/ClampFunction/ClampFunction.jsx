@@ -1,14 +1,16 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './ClampFunction.module.scss';
 import Copy from './copy.svg';
 
 const ClampFunction = () => {
   const [minWidthPX, setMinWidthPX] = useState(320);
   const [maxWidthPX, setMaxWidthPX] = useState(1920);
-  const [minValueSizePX, setMinFontSizePX] = useState(1);
-  const [maxValueSizePX, setMaxFontSizePX] = useState(3);
+  const [minValueSizePX, setMinFontSizePX] = useState(16);
+  const [maxValueSizePX, setMaxFontSizePX] = useState(32);
   const [pixelsPerRem, setPixelsPerRem] = useState(1);
   const [unitOfMeasurement, setUnitOfMeasurement] = useState('px');
+  const [isSwap, setIsSwap] = useState(false);
+  const [error, setError] = useState('');
 
   const fields = [
     {
@@ -94,13 +96,15 @@ const ClampFunction = () => {
   // };
 
   const minWidth = minWidthPX / pixelsPerRem;
-  // console.log('pixelsPerRem: ', pixelsPerRem, unitOfMeasurement);
   const maxWidth = maxWidthPX / pixelsPerRem;
 
-  const slope = (maxValueSizePX - minValueSizePX) / (maxWidth - minWidth);
-  const yAxisIntersection = -minWidth * slope + minValueSizePX;
+  const slope = !isSwap ? ((maxValueSizePX - minValueSizePX) / (maxWidth - minWidth)) : ((minValueSizePX - maxValueSizePX) / (minWidth - maxWidth));
+  const yAxisIntersection = !isSwap ? -minWidth * slope + minValueSizePX : -maxWidth * slope + maxValueSizePX;
 
-  const clampFunc = `clamp(${minValueSizePX}${unitOfMeasurement}, calc(${yAxisIntersection.toFixed(4)}${unitOfMeasurement} + ${(slope * 100).toFixed(4)}vw), ${maxValueSizePX}${unitOfMeasurement})`;
+  const clampFunc = !isSwap ?
+    `clamp(${minValueSizePX}${unitOfMeasurement}, calc(${yAxisIntersection.toFixed(4)}${unitOfMeasurement} + ${(slope * 100).toFixed(4)}vw), ${maxValueSizePX}${unitOfMeasurement})`
+    :
+    `clamp(${maxValueSizePX}${unitOfMeasurement}, calc(${(slope * 100).toFixed(4)}vw + ${yAxisIntersection.toFixed(4)}${unitOfMeasurement}), ${minValueSizePX}${unitOfMeasurement})`
 
   const scheckinput = (event) => {
     const value = event.target.value;
@@ -111,6 +115,20 @@ const ClampFunction = () => {
       event.target.value = value;
     }
   }
+
+  useEffect(() => {
+    if (minValueSizePX > maxValueSizePX) {
+      setIsSwap(true);
+    } else {
+      setIsSwap(false);
+    }
+
+    if (minWidthPX >= maxWidthPX) {
+      setError('Минимальная ширина не может быть больше или равна максимальной');
+    } else {
+      setError('');
+    }
+  }, [minValueSizePX, maxValueSizePX, maxWidthPX, minWidthPX]);
 
   return (
     <div className='container'>
@@ -165,8 +183,8 @@ const ClampFunction = () => {
         >
           <div className={styles['block__title']}>Показывать результат в </div>
           <select
-            name=''
-            id=''
+            name='unit_of_measurement'
+            id='unit_of_measurement'
             className={styles['block__select']}
             onChange={event => {
               setUnitOfMeasurement(event.target.value);
@@ -182,25 +200,41 @@ const ClampFunction = () => {
       </div>
 
       <div className={styles['result']}>
-        <div className={styles['result__item']}>
-          <span className={styles['result__item-title']}>
-            result width calc() ={' '}
-          </span>
-          <div ref={result} className={styles['result__value']}>{clampFunc}</div>
-          <div
-            className={styles['result__copy']}
-            onClick={() => copyToClipboard(copyShow, clampFunc, result)}
-          >
-            <img src={Copy} alt='Copy' title='Copy' />
-          </div>
-          <span
-            ref={copyShow}
-            className={styles['result__copy-success']}
-            data-copy-message
-          >
-            Copied ✔
-          </span>
-        </div>
+        {error ?
+          (<span className={`${styles['result__item-title']} ${styles['result__warning']}`}>
+            Расчет при заданных значениях не предусмотрен.<br />
+            {error}
+          </span>)
+          :
+          (
+            <div className={styles['result__item']}>
+              <span className={styles['result__item-title']}>
+                result width calc() ={' '}
+              </span>
+              <div ref={result} className={styles['result__value']}>{clampFunc}</div>
+              <div
+                className={styles['result__copy']}
+                onClick={() => copyToClipboard(copyShow, clampFunc, result)}
+              >
+                <img src={Copy} alt='Copy' title='Copy' />
+              </div>
+              <span
+                ref={copyShow}
+                className={styles['result__copy-success']}
+                data-copy-message
+              >
+                Copied ✔
+              </span>
+            </div>
+          )
+        }
+
+        {unitOfMeasurement == '%' && (
+          <p className={styles['result__description']}>
+            !!! Проценты добавлены в тестовом режиме. В некоторых случаях может привести к неправильному расчету.
+          </p>
+        )}
+        
       </div>
 
       <dialog
