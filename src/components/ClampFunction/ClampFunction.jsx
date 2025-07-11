@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import Fields from '~components/Fields/Fields';
+import Popup from '~components/Popup/Popup';
+import ResultDisplay from '~components/ResultDisplay/ResultDisplay';
+import SelectUnit from '~components/SelectUnit/SelectUnit';
 import styles from './ClampFunction.module.scss';
-import Copy from './copy.svg';
 
 const ClampFunction = () => {
   const [minWidthPX, setMinWidthPX] = useState(320);
@@ -47,7 +50,6 @@ const ClampFunction = () => {
 
   const copyShow = useRef();
   const result = useRef();
-  const pxRem = useRef(null);
 
   const copyToClipboard = (showMEss, text, toggleResult) => {
     //xxx Если браузер поддерживает Clipboard API, то копируем в буфер обмена
@@ -66,21 +68,8 @@ const ClampFunction = () => {
     }
   };
 
-  const closeDialog = () => {
-    window.popup.close();
-    document.body.classList.remove('scroll-lock');
-  };
-
-  const closeOnBackDropClick = (currentTarget, target) => {
-    const dialogElement = currentTarget;
-    const isClickedOnBackDrop = target === dialogElement;
-    if (isClickedOnBackDrop) {
-      dialogElement.close();
-    }
-  };
-
   const changeUnion = (union, toggleResult) => {
-    union === 'rem' ? (setPixelsPerRem(16), pxRem.current.removeAttribute('disabled')) : (setPixelsPerRem(1), pxRem.current.setAttribute('disabled', ''));
+    union === 'rem' ? setPixelsPerRem(16) : setPixelsPerRem(1);
     toggleResult.current.classList.add('jelloHorizontal');
     setTimeout(() => (toggleResult.current.classList.remove('jelloHorizontal')), 2000);
   };
@@ -106,15 +95,6 @@ const ClampFunction = () => {
     :
     `clamp(${maxValueSizePX}${unitOfMeasurement}, calc(${(slope * 100).toFixed(4)}vw + ${yAxisIntersection.toFixed(4)}${unitOfMeasurement}), ${minValueSizePX}${unitOfMeasurement})`
 
-  const scheckinput = (event) => {
-    const value = event.target.value;
-
-    if (value.startsWith('0')) {
-      event.target.value = value.slice(1);
-    } else {
-      event.target.value = value;
-    }
-  }
 
   useEffect(() => {
     if (minValueSizePX > maxValueSizePX) {
@@ -147,128 +127,25 @@ const ClampFunction = () => {
       <p className={`not_allocated ${styles['page-description']}`}>*Пример:&nbsp;<b>1rem&nbsp;==&nbsp;16px</b></p>
 
       <div className={styles['block']}>
-        {fields.map((field, index) => (
-          // <div className={styles['block__item']} key={index}  {...field.id && field.id == 'unitOfMeasurement' ? { ref: pxRem } : ''}>
-          <div className={styles['block__item']} key={index}>
-            <div className={styles['block__title']}>{field.title}</div>
-            <div className={styles['block__quantity']} ref={field.id === 'pxRem' ? pxRem : null} {...field.id === 'pxRem' && { disabled: true }}>
-              <span
-                className={styles['block__quantity-button']}
-                onClick={() => field.setFunc(+field.func - 1)}
-              >
-                -
-              </span>
-              <input
-                ref={fields.id}
-                value={field.func}
-                className={styles['block__input']}
-                name={field.id}
-                type='number'
-                onChange={e => (scheckinput(e), field.setFunc(Number(e.target.value)))}
-              />
-              <span
-                className={styles['block__quantity-button']}
-                data-quantity='+'
-                onClick={() => field.setFunc(+field.func + 1)}
-              >
-                +
-              </span>
-            </div>
-          </div>
-        ))}
-        <div
-          className={[
-            [styles['block__item'], styles['block__item-last']].join(' ')
-          ]}
-        >
-          <div className={styles['block__title']}>Показывать результат в </div>
-          <select
-            name='unit_of_measurement'
-            id='unit_of_measurement'
-            className={styles['block__select']}
-            onChange={event => {
-              setUnitOfMeasurement(event.target.value);
-              changeUnion(event.target.value, result);
-            }}
-            defaultValue='px'
-          >
-            <option value='rem'>rem</option>
-            <option value='px'>px</option>
-            <option value='%'>%</option>
-          </select>
-        </div>
+        <Fields fields={fields} unitOfMeasurement={unitOfMeasurement} />
+        <SelectUnit
+          unitOfMeasurement={unitOfMeasurement}
+          setUnitOfMeasurement={setUnitOfMeasurement}
+          changeUnion={changeUnion}
+          result={result}
+        />
       </div>
 
-      <div className={styles['result']}>
-        {error ?
-          (<span className={`${styles['result__item-title']} ${styles['result__warning']}`}>
-            Расчет при заданных значениях не предусмотрен.<br />
-            {error}
-          </span>)
-          :
-          (
-            <div className={styles['result__item']}>
-              <span className={styles['result__item-title']}>
-                result width calc() ={' '}
-              </span>
-              <div ref={result} className={styles['result__value']}>{clampFunc}</div>
-              <div
-                className={styles['result__copy']}
-                onClick={() => copyToClipboard(copyShow, clampFunc, result)}
-              >
-                <img src={Copy} alt='Copy' title='Copy' />
-              </div>
-              <span
-                ref={copyShow}
-                className={styles['result__copy-success']}
-                data-copy-message
-              >
-                Copied ✔
-              </span>
-            </div>
-          )
-        }
+      <ResultDisplay
+        error={error}
+        clampFunc={clampFunc}
+        copyToClipboard={copyToClipboard}
+        result={result}
+        copyShow={copyShow}
+        unitOfMeasurement={unitOfMeasurement}
+      />
 
-        {unitOfMeasurement == '%' && (
-          <p className={styles['result__description']}>
-            !!! Проценты добавлены в тестовом режиме. В некоторых случаях может привести к неправильному расчету.
-          </p>
-        )}
-        
-      </div>
-
-      <dialog
-        className={styles['dialog']}
-        id='popup'
-        onClose={() => closeDialog()}
-        onClick={e => closeOnBackDropClick(e.currentTarget, e.target)}
-      >
-        <div className={styles['dialog-wrapper']}>
-          <h3 className={styles['dialog-title']}>
-            Браузер не поддерживает Clipboard API
-          </h3>
-          <p className={styles['dialog-description']}>
-            Чтобы скопировать в буфер обмена,{' '}
-          </p>
-          <p>
-            выделите текст и&nbsp;нажмите{' '}
-            <strong>Ctrl+C (Cmd+C для Mac)</strong>
-          </p>
-          <button
-            className={styles['dialog-close']}
-            onClick={() => closeDialog()}
-          >
-            &#x2715;
-          </button>
-          <textarea
-            readOnly
-            value={clampFunc}
-            className={styles['dialog-textarea']}
-          >
-            {clampFunc}
-          </textarea>
-        </div>
-      </dialog>
+      <Popup clampFunc={clampFunc}/>
     </div>
   );
 };

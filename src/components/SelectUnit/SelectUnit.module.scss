@@ -1,0 +1,21 @@
+.block__item {
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0.625rem;
+
+  &-last {
+    max-width: 287px;
+  }
+}
+
+.block__select {
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
