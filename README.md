@@ -10,5 +10,6 @@ An example to use:
 
 ---
 
-[![checking errors and build](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml){:target="_blank"}
-[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml){:target="_blank"}
+[![checking errors and build](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml)
+
+[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml)
