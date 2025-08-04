@@ -12,8 +12,8 @@
   height: clamp(13.75rem, calc(12.2115rem + 7.6923vw), 16.875rem);
   margin: 1rem auto 0;
   padding: 10px;
-  color: white;
-  background-color: var(--primary_blue, rgb(50, 96, 204));
+  color: rgba(255, 255, 255, 0.74);
+  background-color: rgba(46,66,77,1.0);
   font-size: clamp(12px, calc(8.4118px + 1.0588vw), 20px);
   border-radius: clamp(6px, calc(2.5714px + 0.8571vw), 12px);
 
@@ -46,7 +46,7 @@
     height: auto;
     padding: 0 10px;
     color: #f0da8ad8;
-    background-color: rgb(50, 96, 204);
+    background-color: rgba(46,66,77,1.0);
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 10;
@@ -61,7 +61,7 @@
     height: auto;
     padding: 10px 0;
     color: #03fcff;
-    background-color: rgb(50, 96, 204);
+    background-color: rgba(46,66,77,1.0);
     // text-align: center;
     z-index: 10;
   }
@@ -112,6 +112,5 @@
   &-img {
     width: 100%;
     border-radius: 6px;
-    filter: var(--filter_invert);
   }
 }
