@@ -1,4 +1,4 @@
-# CLAMP FUNCTION
+# CLAMP CALCULATOR
 
 This service helps you quickly and easily calculate the sizes, margins, etc. that can be specified for a "smooth" change using the css clamp() function
 

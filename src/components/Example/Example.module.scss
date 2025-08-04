@@ -13,7 +13,7 @@
   margin: 1rem auto 0;
   padding: 10px;
   color: white;
-  background-color: rgb(50, 96, 204);
+  background-color: var(--primary_blue, rgb(50, 96, 204));
   font-size: clamp(12px, calc(8.4118px + 1.0588vw), 20px);
   border-radius: clamp(6px, calc(2.5714px + 0.8571vw), 12px);
 
@@ -24,6 +24,10 @@
   &-title {
     font-size: clamp(14px, calc(10.5714px + 0.8571vw), 20px);
     text-align: center;
+
+    > small {
+      text-align: justify;
+    }
   }
 
   &-info {
@@ -41,7 +45,7 @@
     min-width: 190px;
     height: auto;
     padding: 0 10px;
-    color: #f0da8a;
+    color: #f0da8ad8;
     background-color: rgb(50, 96, 204);
     transform: translate(-50%, -50%);
     text-align: center;
@@ -108,5 +112,6 @@
   &-img {
     width: 100%;
     border-radius: 6px;
+    filter: var(--filter_invert);
   }
 }

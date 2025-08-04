@@ -1,13 +1,13 @@
 {
-  "name": "clamp-function",
+  "name": "clamp-calculator",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Krechkovskiy Oleg",
   "license": "MIT License",
   "bugs": {
-    "url": "https://github.com/OlegKrechkovskiy/uploader-work-space/issues"
+    "url": "https://github.com/OlegKrechkovskiy/clamp-calculator/issues"
   },
-  "homepage": "https://github.com/OlegKrechkovskiy/uploader-work-space#readme",
+  "homepage": "https://github.com/OlegKrechkovskiy/clamp-calculator#readme",
   "type": "module",
   "scripts": {
     "dev": "vite",

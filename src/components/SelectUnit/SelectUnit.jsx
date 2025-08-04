@@ -8,7 +8,7 @@ const SelectUnit = ({
 }) => {
   return (
     <div className={[styles['block__item'], styles['block__item-last']].join(" ")}>
-      <div className={styles['block__title']}>Показывать результат в </div>
+      <div className={`${styles['block__title']} not_allocated`}>Показывать результат в </div>
       <select
         name="unit_of_measurement"
         id="unit_of_measurement"

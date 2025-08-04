@@ -13,20 +13,20 @@ const ResultDisplay = ({
   return (
     <div className={styles['result']}>
       {error ? (
-        <span className={`${styles['result__item-title']} ${styles['result__warning']}`}>
+        <span className={`${styles['result__item-title']} ${styles['result__warning']} not_allocated`}>
           Расчет при заданных значениях не предусмотрен.<br />
           {error}
         </span>
       ) : (
         <div className={styles['result__item']}>
-          <span className={styles['result__item-title']}>
-            result width calc() =
+          <span className={`${styles['result__item-title']} not_allocated`}>
+            result width calc(&nbsp;) =
           </span>
           <div ref={result} className={styles['result__value']}>
             {clampFunc}
           </div>
           <div
-            className={styles['result__copy']}
+            className={`${styles['result__copy']} not_allocated`}
             onClick={() => copyToClipboard(copyShow, clampFunc, result)}
           >
             <img src={Copy} alt="Copy" title="Copy" />

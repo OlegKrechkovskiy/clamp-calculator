@@ -1,15 +1,18 @@
-
 .block__item {
   width: 100%;
   max-width: 370px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 0.625rem;
 
   &-last {
     max-width: 287px;
+  }
+
+  @media screen and (max-width: 450px) {
+    justify-content: space-evenly;
   }
 }
 
@@ -44,6 +47,7 @@
     padding: 5px 10px;
     font-size: 1.1rem;
     border: 1px solid var(--grey);
+    color: var(--text_color);
     cursor: pointer;
     transition: var(--transition);
 
@@ -62,7 +66,8 @@
     }
 
     &:hover {
-      background-color: var(--lite_blue);
+      background-color: var(--button_hover);
+      color: var(--text_color_reverse);
     }
   }
 
@@ -76,6 +81,7 @@
   padding: 5px 10px;
   // max-width: 100px;
   text-align: center;
+  color: var(--text_color);
   border: 1px solid var(--grey);
   // border-bottom: 1px solid var(--grey);
   // border-right: 1px solid var(--grey);

@@ -6,9 +6,35 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 0.625rem;
+  color: var(--text_color);
 
   &-last {
     max-width: 287px;
+
+    @media screen and (max-width: 420px) {
+      margin: 0 auto;
+      max-width: 255px;
+    }
+  }
+}
+
+.block__title {
+  flex: 0 1 200px;
+  font-size: clamp(0.75rem, calc(0.725rem + 0.125vw), 1rem);
+  text-align: end;
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+
+  @media screen and (max-width: 500px) {
+    text-align: center;
+  }
+  @media screen and (max-width: 420px) {
+
+    flex: 0 1 150px;
   }
 }
 
@@ -16,6 +42,11 @@
   padding: 5px 10px;
   font-size: 1.1rem;
   border-radius: 6px;
+  color: var(--text_color);
   cursor: pointer;
   transition: var(--transition);
+
+  &:focus-visible {
+    outline: 1px solid var(--text_color);
+  }
 }

@@ -17,7 +17,7 @@ const Fields = ({ fields, unitOfMeasurement }) => {
       {/* {console.log('%c unitOfMeasurement ', 'background:black;color:white;padding:5px;', unitOfMeasurement)} */}
       {fields.map((field, index) => (
         <div className={styles['block__item']} key={index}>
-          <div className={styles['block__title']}>{field.title}</div>
+          <div className={`${styles['block__title']} not_allocated`}>{field.title}</div>
           <div className={`${styles['block__quantity']} not_allocated`} {...field.id === 'pxRem' && (unitOfMeasurement == 'px' || unitOfMeasurement == '%') && { disabled: true }}>
             <span
               className={styles['block__quantity-button']}
