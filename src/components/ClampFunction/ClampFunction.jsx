@@ -18,31 +18,31 @@ const ClampFunction = () => {
   const fields = [
     {
       id: 'minWidthPX',
-      title: 'Minimum viewport width = ',
+      title: 'Minimum viewport width ',
       func: minWidthPX,
       setFunc: setMinWidthPX
     },
     {
       id: 'maxWidthPX',
-      title: 'Maximum viewport width = ',
+      title: 'Maximum viewport width ',
       func: maxWidthPX,
       setFunc: setMaxWidthPX
     },
     {
       id: 'minValueSizePX',
-      title: 'Minimum value size = ',
+      title: 'Minimum value size ',
       func: minValueSizePX,
       setFunc: setMinFontSizePX
     },
     {
       id: 'maxValueSizePX',
-      title: 'Maximum value size = ',
+      title: 'Maximum value size ',
       func: maxValueSizePX,
       setFunc: setMaxFontSizePX
     },
     {
       id: 'pxRem',
-      title: 'Pixels per rem = ',
+      title: 'Pixels per rem ',
       func: pixelsPerRem,
       setFunc: setPixelsPerRem
     }
@@ -112,7 +112,7 @@ const ClampFunction = () => {
 
   return (
     <div className='container'>
-      <h1 className={`not_allocated ${styles['page-title']}`}>Clamp function</h1>
+      <h1 className={`not_allocated ${styles['page-title']}`}>Clamp Calculator</h1>
       <p className={`not_allocated ${styles['page-description']}`}>
         Данная функция рассчитывает наиблее приемлемые значения для адаптивного
         уменьшения/увеличения размеров.

@@ -1,43 +1,9 @@
-:root {
-  color-scheme: light dark;
-  --text_color: rgba(255, 255, 255, 1);
-
-  /* COLORS */
-  --primary_dark: rgba(33, 33, 33, 1);
-  --primary_blue: rgba(113, 136, 212, 1);
-  --warn: rgba(255, 0, 0, 1);
-
-  --dark: var(--primary_dark);
-  --text: color-mix(in srgb, var(--primary_dark) 4.7%, #ffffff);
-
-  --grey: color-mix(in srgb, var(--primary_dark) 46%, #ffffff);
-  --light: color-mix(in srgb, var(--primary_dark) 0%, #ffffff);
-  --lite_blue: rgb(50, 63, 124);
-  --blue: var(--primary_blue);
-
-  /* transition */
-  --transition: 0.3s ease;
-
-  /* SIZES */
-  --max_width: 1440px;
-
-  /* margins */
-  --margin_block: 30px;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --text_color: black;
-    --lite_blue: rgba(225, 232, 255, 1);
-  }
-}
-
 .page-title {
   margin-top: var(--margin_block);
   margin-bottom: var(--margin_block);
   font-size: clamp(1.8rem, calc(1.56rem + 1.2vw), 3rem);
   text-align: center;
-  color: var(--color);
+  color: var(--text_color);
 }
 
 .page-description {
@@ -52,11 +18,17 @@
 .block {
   margin-top: var(--margin_block);
   padding-top: var(--margin_block);
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: flex-start;
   gap: 1rem;
   border-top: 1px solid var(--grey);
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: auto;
+  }
 }
 
 .swap {

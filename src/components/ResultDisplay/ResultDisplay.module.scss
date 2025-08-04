@@ -59,10 +59,11 @@
   height: auto;
   margin-left: 10px;
   padding: 7px;
-  background-color: var(--dark);
+  background-color: var(--background-reverse);
   border-radius: 6px;
   transition: 0.3s ease;
   cursor: pointer;
+  opacity: 0.6;
 
   img {
     max-width: 100%;
@@ -70,7 +71,7 @@
   }
 
   &:hover {
-    opacity: 0.8;
+    opacity: 1;
   }
 
   &-success {

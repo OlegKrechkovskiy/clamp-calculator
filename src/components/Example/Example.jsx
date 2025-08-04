@@ -55,7 +55,7 @@ const Example = () => {
       <div className='container'>
         <h2 className={`not_allocated ${styles['block-title']}`}>
           Пример блока с&nbsp;адаптивными размерами<br />
-          <small>При ресайзе окна браузера размеры блока, отступы, шрифт, радиусы углов будут изменяться</small>
+          <small>Размеры блока, внутренние и&nbsp;внешние отступы, размер шрифта и&nbsp;радиус закругления углов динамически адаптируются под&nbsp;изменение размеров окна браузера.</small>
         </h2>
         <div className={`not_allocated ${styles['block']}`} data-block>
           <div className={styles['block-info']}>
