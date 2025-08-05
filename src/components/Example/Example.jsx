@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Example.module.scss';
-import video from './clamp.gif';
+import video from '/preview/clamp.gif';
 
 const Example = () => {
   const [fontSize, setFontSize] = useState(0);

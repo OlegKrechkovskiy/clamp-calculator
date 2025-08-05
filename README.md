@@ -10,6 +10,24 @@ An example to use:
 
 ---
 
-[![checking errors and build](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/github-actions.yml)
+[![checking errors and build](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/github-actions.yml)
 
-[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-function-helper/actions/workflows/uploading-to-host.yml)
+[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/uploading-to-host.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/uploading-to-host.yml)
+
+---
+
+![example](https://github.com/OlegKrechkovskiy/clamp-calculator/public/preview/clamp.gif)
+
+---
+## More information
+
+* [GitHub](https://github.com/OlegKrechkovskiy)
+* [Telegram](https://t.me/olegkrech)
+
+## License
+
+MIT - see license details [here][license-url]
+
+**Enjoy!**
+
+[license-url]: https://github.com/OlegKrechkovskiy/clamp-calculator/blob/main/LICENSE.md

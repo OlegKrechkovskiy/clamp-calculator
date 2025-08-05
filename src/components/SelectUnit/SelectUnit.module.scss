@@ -42,9 +42,10 @@
 .block__select {
   padding: 5px 10px;
   font-size: 1.1rem;
-  border-radius: 6px;
   color: var(--text_color);
   background-color: var(--background);
+  border-radius: 6px;
+  border-color: var(--grey);
   cursor: pointer;
   transition: var(--transition);
 
