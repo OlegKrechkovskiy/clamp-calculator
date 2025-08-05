@@ -89,6 +89,10 @@
   // border-left: 1px solid var(--grey);
   border-radius: 0;
   outline: none;
+
+  &:focus {
+    color: var(--acc_text);
+  }
 }
 
 input::-webkit-outer-spin-button,

@@ -3,6 +3,7 @@
   --primary_dark: rgba(33, 33, 33, 1);
   --primary_blue: rgb(50, 96, 204); // rgba(38,72,181,0.73);
   --text_color: rgba(151,145,114,1.0);
+  --acc_text: color-mix(in srgb, white 30%, var(--text_color));
   --background: rgba(25, 34, 41, 1.0);
   --text_color_reverse: rgba(25, 34, 41, 1.0);
   --background-reverse: rgba(25, 34, 41, 1.0);
@@ -41,8 +42,9 @@
 @media (prefers-color-scheme: light) {
   :root {
     --text_color: rgba(33, 53, 71, 1.0);
-    --text_color_reverse: rgba(255, 255, 255, 1.0);
-    --background: rgba(255, 255, 255, 1.0);
+    --text_color_reverse: rgba(242,243,244,1.0);
+    --acc_text: color-mix(in srgb, black 70%, var(--text_color));
+    --background: rgba(242,243,244,1.0);
     --background-reverse: rgba(33, 53, 71, 1.0);
     --button_hover:color-mix(in srgb, var(--primary_blue) 70%, #ffffff);
     --filter_invert: invert(0);
