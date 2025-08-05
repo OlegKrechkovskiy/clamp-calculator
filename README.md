@@ -16,7 +16,7 @@ An example to use:
 
 ---
 
-![example](https://github.com/OlegKrechkovskiy/clamp-calculator/public/preview/clamp.gif)
+![clamp calculator preview](public/preview/clamp.gif)
 
 ---
 ## More information
@@ -26,8 +26,6 @@ An example to use:
 
 ## License
 
-MIT - see license details [here][license-url]
+MIT - see license details [here](LICENSE)
 
 **Enjoy!**
-
-[license-url]: https://github.com/OlegKrechkovskiy/clamp-calculator/blob/main/LICENSE.md
