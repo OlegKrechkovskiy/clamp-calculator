@@ -5,14 +5,15 @@ This service helps you quickly and easily calculate the sizes, margins, etc. tha
 > For more information, go to [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
 
 An example to use:
-- [netlify.app](https://clamp-function-helper.netlify.app/)
-- [myxlxal.ru](https://myxlxal.ru/)
+- [netlify.app](https://clamp-calculate.netlify.app/)
+- [clamp-calculate.vercel.app](https://clamp-calculate.vercel.app/)
+- [olegkrechkovskiy.github.io](https://olegkrechkovskiy.github.io/myx.github.io/clump_func/)
 
----
+<!-- --- -->
 
-[![checking errors and build](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/github-actions.yml)
+<!-- [![checking errors and build](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/github-actions.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/github-actions.yml)
 
-[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/uploading-to-host.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/uploading-to-host.yml)
+[![uploading on myxlxal.ru](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/uploading-to-host.yml/badge.svg)](https://github.com/OlegKrechkovskiy/clamp-calculator/actions/workflows/uploading-to-host.yml) -->
 
 ---
 
