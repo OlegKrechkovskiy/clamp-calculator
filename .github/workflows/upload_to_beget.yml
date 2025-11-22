@@ -1,0 +1,52 @@
+name: uploading to beget
+run-name: ${{ github.actor }} uploading to beget  🚀
+on:
+  pull_request:
+    branches: [main]
+    types:
+      - closed
+jobs:
+
+  web-deploy:
+    if: github.event.pull_request.merged == true
+    name: 🎉 Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: ⤵️ Use Node.js latest
+        uses: actions/setup-node@v4
+        with:
+          node-version: '>=22'
+
+      - name: 🔧 install Project
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+
+      - name: 🧐 lint Project
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: lint
+
+      - name: 🔨 Build Project
+        # run: |
+        #   npm install
+        #   npm run build
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
+        # env:
+        #   VITE_API_URL: ${{ secrets.API_URL }}
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          protocol: ftps
+          password: ${{ secrets.FTP_PASSWORD }}
+          username: ${{ secrets.FTP_USERNAME }}
+          local-dir: dist/
+          server-dir: /defail_beget_page/public_html/clamp-calculate/
