@@ -112,7 +112,7 @@ const ClampFunction = () => {
 
   return (
     <div className='container'>
-      <h1 className={`not_allocated ${styles['page-title']}`}>Clamp Calculator</h1>
+      <h1 className={`not_allocated ${styles['page-title']}`}>CSS Clamp() Calculator — Generate Responsive Values Instantly</h1>
       <p className={`not_allocated ${styles['page-description']}`}>
         Данная функция рассчитывает наиблее приемлемые значения для адаптивного
         уменьшения/увеличения размеров.

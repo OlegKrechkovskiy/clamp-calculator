@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
   <meta charset="UTF-8" />
@@ -33,11 +33,58 @@
   <meta name="application-name" content="My Application">
   <meta name="msapplication-config" content="./browserconfig.xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clamp Calculator</title>
+  <title>Clamp() CSS Calculator — Free Online Tool for Responsive Design</title>
+  <meta name="description" content="Free online clamp() CSS calculator. Generate perfect responsive font sizes, padding, margins with fluid scaling. Instant results, no registration needed.">
+  <meta name="keywords" content="CSS clamp calculator, responsive design, fluid typography, min max clamp, web development tools, frontend">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://clampcalculator.vercel.app/">
+  <meta property="og:title" content="CSS Clamp() Calculator — Free Responsive Design Tool">
+  <meta property="og:description" content="Generate perfect clamp() CSS values instantly. No signup required.">
+  <meta property="og:image" content="https://clampcalculator.vercel.app/icon_m.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://clampcalculator.vercel.app/">
+  <meta name="twitter:title" content="CSS Clamp Calculator — Free Online Tool">
+  <meta name="twitter:description" content="Instant clamp() CSS value generator for responsive web design">
+  <meta name="twitter:image" content="https://clampcalculator.vercel.app/icon_m.png">
+  <link rel="canonical" href="https://clampcalculator.vercel.app/">
+  <meta name="author" content="Oleg Krechkovskiy">
+  <meta name="robots" content="index, follow, max-image-preview:large">
 </head>
 
 <body>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Clamp Calculator",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "Free online tool to calculate clamp() CSS values for responsive design",
+    "url": "https://clampcalculator.vercel.app",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Clamp Calculator"
+    }
+  }
+  </script>
   <div id="root"></div>
+  <noscript>
+    <div style="max-width: 600px; margin: 100px auto; padding: 20px; text-align: center; font-family: sans-serif;">
+      <h1>⚠️ JavaScript Required</h1>
+      <p>This interactive clamp calculator requires JavaScript to function properly.</p>
+      <p>Please enable JavaScript in your browser settings or try one of these resources:</p>
+      <ul style="text-align: left; display: inline-block;">
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp">MDN: clamp() function</a></li>
+        <li><a href="https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/">CSS-Tricks: Clamp tutorial</a></li>
+      </ul>
+    </div>
+  </noscript>
   <script type="module" src="src/main.jsx"></script>
 </body>
 
