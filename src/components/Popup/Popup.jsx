@@ -1,7 +1,9 @@
 import propTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import styles from './Popup.module.scss';
 
 const Popup = ({ clampFunc }) => {
+  const { t } = useTranslation();
 
   const closeDialog = () => {
     window.popup.close();
@@ -22,14 +24,14 @@ const Popup = ({ clampFunc }) => {
       onClick={e => closeOnBackDropClick(e.currentTarget, e.target)}>
       <div className={styles['dialog-wrapper']}>
         <h3 className={styles['dialog-title']}>
-          Браузер не поддерживает Clipboard API
+          {t('browserNotSupportClipboard')}
         </h3>
         <p className={styles['dialog-description']}>
-          Чтобы скопировать в буфер обмена,{" "}
+          {t('copyToClipboardInstructions1')}
         </p>
         <p>
-          выделите текст и нажмите{" "}
-          <strong>Ctrl+C (Cmd+C для Mac)</strong>
+          {t('copyToClipboardInstructions2')}{" "}
+          <strong>{t('copyToClipboardInstructions3')}</strong>
         </p>
         <button className={styles['dialog-close']} onClick={() => closeDialog()}>
           ×

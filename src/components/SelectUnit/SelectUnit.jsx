@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import styles from './SelectUnit.module.scss';
 
 const SelectUnit = ({
@@ -6,9 +7,11 @@ const SelectUnit = ({
   changeUnion,
   result
 }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className={[styles['block__item'], styles['block__item-last']].join(" ")}>
-      <div className={`${styles['block__title']} not_allocated`}>Показывать результат в </div>
+      <div className={`${styles['block__title']} not_allocated`}>{t('showResultIn')}</div>
       <select
         name="unit_of_measurement"
         id="unit_of_measurement"
