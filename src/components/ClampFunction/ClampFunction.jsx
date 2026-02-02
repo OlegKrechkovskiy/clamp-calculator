@@ -7,7 +7,7 @@ import SelectUnit from '~components/SelectUnit/SelectUnit';
 import styles from './ClampFunction.module.scss';
 
 const ClampFunction = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [minWidthPX, setMinWidthPX] = useState(320);
   const [maxWidthPX, setMaxWidthPX] = useState(1920);
   const [minValueSizePX, setMinFontSizePX] = useState(16);
@@ -110,7 +110,7 @@ const ClampFunction = () => {
     } else {
       setError('');
     }
-  }, [minValueSizePX, maxValueSizePX, maxWidthPX, minWidthPX, i18n.language]);
+  }, [minValueSizePX, maxValueSizePX, maxWidthPX, minWidthPX, t]);
 
   return (
     <div className='container'>
