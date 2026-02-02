@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Fields from '~components/Fields/Fields';
 import Popup from '~components/Popup/Popup';
 import ResultDisplay from '~components/ResultDisplay/ResultDisplay';
@@ -6,6 +7,7 @@ import SelectUnit from '~components/SelectUnit/SelectUnit';
 import styles from './ClampFunction.module.scss';
 
 const ClampFunction = () => {
+  const { t, i18n } = useTranslation();
   const [minWidthPX, setMinWidthPX] = useState(320);
   const [maxWidthPX, setMaxWidthPX] = useState(1920);
   const [minValueSizePX, setMinFontSizePX] = useState(16);
@@ -18,31 +20,31 @@ const ClampFunction = () => {
   const fields = [
     {
       id: 'minWidthPX',
-      title: 'Minimum viewport width ',
+      title: t('minViewportWidth'),
       func: minWidthPX,
       setFunc: setMinWidthPX
     },
     {
       id: 'maxWidthPX',
-      title: 'Maximum viewport width ',
+      title: t('maxViewportWidth'),
       func: maxWidthPX,
       setFunc: setMaxWidthPX
     },
     {
       id: 'minValueSizePX',
-      title: 'Minimum value size ',
+      title: t('minValueSize'),
       func: minValueSizePX,
       setFunc: setMinFontSizePX
     },
     {
       id: 'maxValueSizePX',
-      title: 'Maximum value size ',
+      title: t('maxValueSize'),
       func: maxValueSizePX,
       setFunc: setMaxFontSizePX
     },
     {
       id: 'pxRem',
-      title: 'Pixels per rem ',
+      title: t('pixelsPerRem'),
       func: pixelsPerRem,
       setFunc: setPixelsPerRem
     }
@@ -104,27 +106,25 @@ const ClampFunction = () => {
     }
 
     if (minWidthPX >= maxWidthPX) {
-      setError('Минимальная ширина не может быть больше или равна максимальной');
+      setError(t('minWidthError'));
     } else {
       setError('');
     }
-  }, [minValueSizePX, maxValueSizePX, maxWidthPX, minWidthPX]);
+  }, [minValueSizePX, maxValueSizePX, maxWidthPX, minWidthPX, i18n.language]);
 
   return (
     <div className='container'>
-      <h1 className={`not_allocated ${styles['page-title']}`}>CSS Clamp() Calculator — Generate Responsive Values Instantly</h1>
+      <h1 className={`not_allocated ${styles['page-title']}`}>{t('calculatorTitle')}</h1>
       <p className={`not_allocated ${styles['page-description']}`}>
-        Данная функция рассчитывает наиблее приемлемые значения для адаптивного
-        уменьшения/увеличения размеров.
+        {t('description1')}
       </p>
       <p className={`not_allocated ${styles['page-description']}`}>
-        Подходит для размеров шрифтов, отступов, размеров блоков...
+        {t('description2')}
       </p>
       <p className={`not_allocated ${styles['page-description']}`}>
-        Для рассчета В <b>rem</b> - просто выставляем в поле{' '}
-        <b>&quot;Pixels&nbsp;per&nbsp;rem&nbsp;=&nbsp;&quot;&nbsp;значение px</b>
+        {t('description3')}
       </p>
-      <p className={`not_allocated ${styles['page-description']}`}>*Пример:&nbsp;<b>1rem&nbsp;==&nbsp;16px</b></p>
+      <p className={`not_allocated ${styles['page-description']}`}>{t('exampleRem')}</p>
 
       <div className={styles['block']}>
         <Fields fields={fields} unitOfMeasurement={unitOfMeasurement} />

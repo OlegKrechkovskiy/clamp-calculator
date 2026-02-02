@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import styles from './ResultDisplay.module.scss';
 import Copy from './copy.svg';
 
@@ -10,17 +11,19 @@ const ResultDisplay = ({
   result,
   copyShow
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles['result']}>
       {error ? (
         <span className={`${styles['result__item-title']} ${styles['result__warning']} not_allocated`}>
-          Расчет при заданных значениях не предусмотрен.<br />
+          {t('calculationNotProvided')}<br />
           {error}
         </span>
       ) : (
         <div className={styles['result__item']}>
           <span className={`${styles['result__item-title']} not_allocated`}>
-            result width calc(&nbsp;) =
+            {t('resultWidthCalc')}
           </span>
           <div ref={result} className={styles['result__value']}>
             {clampFunc}
@@ -36,14 +39,14 @@ const ResultDisplay = ({
             className={styles['result__copy-success']}
             data-copy-message
           >
-            Copied ✔
+            {t('copied')}
           </span>
         </div>
       )}
 
       {unitOfMeasurement === "%" && (
         <p className={styles['result__description']}>
-          !!! Проценты добавлены в тестовом режиме. В некоторых случаях может привести к неправильному расчету.
+          {t('percentWarning')}
         </p>
       )}
     </div>

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './Example.module.scss';
 import video from '/preview/clamp.gif';
 
 const Example = () => {
+  const { t } = useTranslation();
   const [fontSize, setFontSize] = useState(0);
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
@@ -54,31 +56,31 @@ const Example = () => {
     <div className={styles.wrapper}>
       <div className='container'>
         <h2 className={`not_allocated ${styles['block-title']}`}>
-          Пример блока с&nbsp;адаптивными размерами<br />
-          <small>Размеры блока, внутренние и&nbsp;внешние отступы, размер шрифта и&nbsp;радиус закругления углов динамически адаптируются под&nbsp;изменение размеров окна браузера.</small>
+          {t('exampleBlockTitle')}<br />
+          <small>{t('exampleBlockDescription')}</small>
         </h2>
         <div className={`not_allocated ${styles['block']}`} data-block>
           <div className={styles['block-info']}>
             <p className={styles['block-width']}>
-              Block width:{' '}
+              {t('blockWidth')}:{' '}
               <span>
                 <strong>{width}</strong>
               </span>
             </p>
             <p className={styles['block-height']}>
-              Block height:{' '}
+              {t('blockHeight')}:{' '}
               <span>
                 <strong>{height}</strong>
               </span>
             </p>
             <p>
-              Font size:{' '}
+              {t('fontSize')}:{' '}
               <span>
                 <strong>{fontSize}</strong>
               </span>
             </p>
             <p className={styles['border-radius']}>
-              Border radius:{' '}
+              {t('borderRadius')}:{' '}
               <span>
                 <strong>{borderRadius}</strong>
               </span>
@@ -90,7 +92,7 @@ const Example = () => {
         </div>
 
         <div className={styles['example']}>
-          <img className={styles['example-img']} src={video} alt="" />
+          <img className={styles['example-img']} src={video} alt={t('exampleGifAlt')} />
         </div>
 
       </div>
