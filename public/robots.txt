@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-Disallow: /?q=
-Disallow: /404
-Disallow: /500
-
-Host: https://clampcalculator.vercel.app/
-Sitemap: https://clampcalculator.vercel.app/sitemap.xml

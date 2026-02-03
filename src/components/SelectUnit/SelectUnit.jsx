@@ -8,7 +8,7 @@ const SelectUnit = ({
   result
 }) => {
   const { t } = useTranslation();
-  
+
   return (
     <div className={[styles['block__item'], styles['block__item-last']].join(" ")}>
       <div className={`${styles['block__title']} not_allocated`}>{t('showResultIn')}</div>

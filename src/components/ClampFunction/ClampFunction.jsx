@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Fields from '~components/Fields/Fields';
-import Popup from '~components/Popup/Popup';
-import ResultDisplay from '~components/ResultDisplay/ResultDisplay';
-import SelectUnit from '~components/SelectUnit/SelectUnit';
+import Fields from '@/components/Fields/Fields';
+import Popup from '@/components/Popup/Popup';
+import ResultDisplay from '@/components/ResultDisplay/ResultDisplay';
+import SelectUnit from '@/components/SelectUnit/SelectUnit';
 import styles from './ClampFunction.module.scss';
 
 const ClampFunction = () => {
