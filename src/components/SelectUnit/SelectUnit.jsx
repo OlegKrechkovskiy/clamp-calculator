@@ -24,7 +24,7 @@ const SelectUnit = ({
       >
         <option value="rem">rem</option>
         <option value="px">px</option>
-        <option value="%">%</option>
+        {/* <option value="%">%</option> */}
       </select>
     </div>
   );

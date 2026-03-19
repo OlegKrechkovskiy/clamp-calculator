@@ -114,7 +114,7 @@ const ClampFunction = () => {
 
   return (
     <div className='container'>
-      <h1 className={`not_allocated ${styles['page-title']}`}>{t('calculatorTitle')}</h1>
+      <h2 className={`not_allocated ${styles['page-title']}`}>{t('calculatorTitle')}</h2>
       <p className={`not_allocated ${styles['page-description']}`}>
         {t('description1')}
       </p>
