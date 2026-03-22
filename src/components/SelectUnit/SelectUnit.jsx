@@ -8,7 +8,7 @@ const SelectUnit = ({
   result
 }) => {
   const { t } = useTranslation();
-  
+
   return (
     <div className={[styles['block__item'], styles['block__item-last']].join(" ")}>
       <div className={`${styles['block__title']} not_allocated`}>{t('showResultIn')}</div>
@@ -24,7 +24,7 @@ const SelectUnit = ({
       >
         <option value="rem">rem</option>
         <option value="px">px</option>
-        <option value="%">%</option>
+        {/* <option value="%">%</option> */}
       </select>
     </div>
   );

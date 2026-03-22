@@ -20,6 +20,10 @@ body {
   scrollbar-gutter: stable;
 }
 
+.main__title {
+  display: none !important;
+}
+
 .container {
   max-width: var(--max_width);
   width: 100%;

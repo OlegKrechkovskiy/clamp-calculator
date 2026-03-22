@@ -8,8 +8,8 @@
 .btn {
   padding: 5px 10px;
   color: var(--text_color, rgba(151,145,114,1.0));
-  background-color: var(--background-reverse, rgba(25, 34, 41, 1.0));
-  opacity: 0.6;
+  background-color: var(--background, rgba(25, 34, 41, 1.0));
+  opacity: 0.5;
   cursor: pointer;
   border: 1px solid var(--grey, rgb(131, 125, 90));
   border-radius: 4px;

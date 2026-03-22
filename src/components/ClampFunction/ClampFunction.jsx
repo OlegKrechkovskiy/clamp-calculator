@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Fields from '~components/Fields/Fields';
-import Popup from '~components/Popup/Popup';
-import ResultDisplay from '~components/ResultDisplay/ResultDisplay';
-import SelectUnit from '~components/SelectUnit/SelectUnit';
+import Fields from '@/components/Fields/Fields';
+import Popup from '@/components/Popup/Popup';
+import ResultDisplay from '@/components/ResultDisplay/ResultDisplay';
+import SelectUnit from '@/components/SelectUnit/SelectUnit';
 import styles from './ClampFunction.module.scss';
 
 const ClampFunction = () => {
@@ -114,7 +114,7 @@ const ClampFunction = () => {
 
   return (
     <div className='container'>
-      <h1 className={`not_allocated ${styles['page-title']}`}>{t('calculatorTitle')}</h1>
+      <h2 className={`not_allocated ${styles['page-title']}`}>{t('calculatorTitle')}</h2>
       <p className={`not_allocated ${styles['page-description']}`}>
         {t('description1')}
       </p>
