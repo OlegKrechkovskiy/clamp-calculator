@@ -5,7 +5,7 @@ This service helps you quickly and easily calculate the sizes, margins, etc. tha
 > For more information, go to [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
 
 An example to use:
-- [clamp-calculate.vercel.app](https://clamp-calc.vercel.app/)
+- [clamp-calc.vercel.app](https://clamp-calc.vercel.app/)
 - [olegkrechkovskiy.github.io](https://olegkrechkovskiy.github.io/myx.github.io/clump_func/)
 - [netlify.app](https://clamp-calculate.netlify.app/)
 
