@@ -24,6 +24,9 @@ export async function generateMetadata({ params }) {
     metadataBase: new URL(SITE_URL),
     title: t('metaTitle'),
     description: t('metaDescription'),
+    verification: {
+      yandex: 'beda73bca75be22b',
+    },
     keywords: t('metaKeywords'),
     authors: [{ name: 'Oleg Krechkovskiy' }],
     alternates: {
