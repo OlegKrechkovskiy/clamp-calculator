@@ -1,5 +1,6 @@
+'use client';
 import propTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import styles from './SelectUnit.module.scss';
 
 const SelectUnit = ({
@@ -7,7 +8,7 @@ const SelectUnit = ({
   changeUnion,
   result
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <div className={[styles['block__item'], styles['block__item-last']].join(" ")}>

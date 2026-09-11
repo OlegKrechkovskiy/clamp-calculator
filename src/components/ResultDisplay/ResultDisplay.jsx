@@ -1,7 +1,7 @@
+'use client';
 import propTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import styles from './ResultDisplay.module.scss';
-import Copy from './copy.svg';
 
 const ResultDisplay = ({
   error,
@@ -11,7 +11,7 @@ const ResultDisplay = ({
   result,
   copyShow
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <div className={styles['result']}>
@@ -32,7 +32,7 @@ const ResultDisplay = ({
             className={`${styles['result__copy']} not_allocated`}
             onClick={() => copyToClipboard(copyShow, clampFunc, result)}
           >
-            <img src={Copy} alt="Copy" title="Copy" />
+            <img src="/copy.svg" alt="Copy" title="Copy" />
           </div>
           <span
             ref={copyShow}

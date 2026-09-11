@@ -1,5 +1,6 @@
+'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import Fields from '@/components/Fields/Fields';
 import Popup from '@/components/Popup/Popup';
 import ResultDisplay from '@/components/ResultDisplay/ResultDisplay';
@@ -7,7 +8,7 @@ import SelectUnit from '@/components/SelectUnit/SelectUnit';
 import styles from './ClampFunction.module.scss';
 
 const ClampFunction = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [minWidthPX, setMinWidthPX] = useState(320);
   const [maxWidthPX, setMaxWidthPX] = useState(1920);
   const [minValueSizePX, setMinFontSizePX] = useState(16);
@@ -54,7 +55,7 @@ const ClampFunction = () => {
   const result = useRef();
 
   const copyToClipboard = (showMEss, text, toggleResult) => {
-    //xxx Если браузер поддерживает Clipboard API, то копируем в буфер обмена
+    // Если браузер поддерживает Clipboard API, то копируем в буфер обмена
     if (window.isSecureContext && navigator.clipboard) {
       navigator.clipboard.writeText(text);
       showMEss.current.style.opacity = '1';
@@ -63,10 +64,6 @@ const ClampFunction = () => {
     } else {
       window.popup.showModal();
       document.body.classList.add('scroll-lock');
-      //xxx Если браузер не поддерживает Clipboard API, то копируем в буфер обмена с помощью функции unsecuredCopyToClipboard
-      // unsecuredCopyToClipboard(text);
-      // showMEss.current.style.opacity = '1';
-      // setTimeout(() => (showMEss.current.style.opacity = '0'), 5000);
     }
   };
 
@@ -75,16 +72,6 @@ const ClampFunction = () => {
     toggleResult.current.classList.add('jelloHorizontal');
     setTimeout(() => (toggleResult.current.classList.remove('jelloHorizontal')), 2000);
   };
-
-  // const unsecuredCopyToClipboard = text => {
-  //   const textArea = document.createElement('textarea');
-  //   textArea.value = text;
-  //   document.body.appendChild(textArea);
-  //   textArea.focus();
-  //   textArea.select();
-  //   document.execCommand('copy');
-  //   document.body.removeChild(textArea);
-  // };
 
   const minWidth = minWidthPX / pixelsPerRem;
   const maxWidth = maxWidthPX / pixelsPerRem;
@@ -114,7 +101,7 @@ const ClampFunction = () => {
 
   return (
     <div className='container'>
-      <h2 className={`not_allocated ${styles['page-title']}`}>{t('calculatorTitle')}</h2>
+      <h1 className={`not_allocated ${styles['page-title']}`}>{t('calculatorTitle')}</h1>
       <p className={`not_allocated ${styles['page-description']}`}>
         {t('description1')}
       </p>
