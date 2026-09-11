@@ -1,10 +1,10 @@
+'use client';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import styles from './Example.module.scss';
-import video from '/preview/clamp.gif';
 
 const Example = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [fontSize, setFontSize] = useState(0);
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
@@ -92,7 +92,7 @@ const Example = () => {
         </div>
 
         <div className={styles['example']}>
-          <img className={styles['example-img']} src={video} alt={t('exampleGifAlt')} />
+          <img className={styles['example-img']} src="/preview/clamp.gif" alt={t('exampleGifAlt')} />
         </div>
 
       </div>

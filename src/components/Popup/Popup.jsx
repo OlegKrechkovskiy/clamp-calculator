@@ -1,9 +1,10 @@
+'use client';
 import propTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import styles from './Popup.module.scss';
 
 const Popup = ({ clampFunc }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const closeDialog = () => {
     window.popup.close();
@@ -40,9 +41,7 @@ const Popup = ({ clampFunc }) => {
           readOnly
           value={clampFunc}
           className={styles['dialog-textarea']}
-        >
-          {clampFunc}
-        </textarea>
+        />
       </div>
     </dialog>
   );

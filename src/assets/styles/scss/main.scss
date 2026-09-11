@@ -1,4 +1,4 @@
-@import './variabels';
+@use './variabels';
 
 *,
 *::before,
@@ -94,6 +94,13 @@ button {
   &:disabled {
     cursor: not-allowed;
   }
+}
+
+/* Скрываем стрелки спиннера для числовых инпутов (глобальное правило) */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .scroll-lock {

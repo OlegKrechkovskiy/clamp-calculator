@@ -1,3 +1,4 @@
+'use client';
 import propTypes from 'prop-types';
 import styles from './Fields.module.scss';
 
@@ -14,7 +15,6 @@ const Fields = ({ fields, unitOfMeasurement }) => {
 
   return (
     <>
-      {/* {console.log('%c unitOfMeasurement ', 'background:black;color:white;padding:5px;', unitOfMeasurement)} */}
       {fields.map((field, index) => (
         <div className={styles['block__item']} key={index}>
           <div className={`${styles['block__title']} not_allocated`}>{field.title}</div>
